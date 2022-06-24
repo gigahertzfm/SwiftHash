@@ -21,10 +21,18 @@ public func MD5(_ input: String) -> String {
   return hex_md5(input)
 }
 
+public func MD5(_ input: Data) -> String {
+  return hex_md5(input)
+}
+
 // MARK: - Functions
 
 func hex_md5(_ input: String) -> String {
   return rstr2hex(rstr_md5(str2rstr_utf8(input)))
+}
+
+func hex_md5(_ input: Data) -> String {
+    return rstr2hex(rstr_md5(input.map { $0 }))
 }
 
 func str2rstr_utf8(_ input: String) -> [CUnsignedChar] {
